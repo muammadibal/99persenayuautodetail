@@ -1,118 +1,97 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
+import CardPackage from '@/components/CardPackage';
+import CardWhyUs from '@/components/CardWhyUs';
+import Footer from '@/components/Footer';
+import Navbar from '@/components/Navbar';
+import SectionContact from '@/components/SectionContact';
+import SectionHero from '@/components/SectionHero';
+import SectionTitle from '@/components/SectionTitle';
+import { BiSolidAlarm, BiSolidCheckShield, BiSolidUser } from "react-icons/bi";
 
-const inter = Inter({ subsets: ['latin'] })
+const DUMMY_REVIEW = [
+  {
+    id: 1,
+    name: "Alan Waller",
+    rate: 5,
+    message: "Lorem ipsum dolor sit amet consectetur. Feugiat elementum suspendisse eu libero. Vel arcu rutrum proin egestas id."
+  },
+  {
+    id: 2,
+    name: "Alan Smith",
+    rate: 4,
+    message: "Lorem ipsum dolor sit amet consectetur. Feugiat elementum suspendisse eu libero. Vel arcu rutrum proin egestas id."
+  },
+  {
+    id: 3,
+    name: "Alan John",
+    rate: 3,
+    message: "Lorem ipsum dolor sit amet consectetur. Feugiat elementum suspendisse eu libero. Vel arcu rutrum proin egestas id."
+  },
+]
 
 export default function Home() {
+  const DETAIL_PHONE = process.env.NEXT_PUBLIC_DETAIL_PHONE as string
+
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div>
+      <Navbar />
+      <main>
+        <SectionHero />
+
+        <div>
+          <SectionTitle id='services' title='Layanan Kami' />
+
+          <div className='container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-[60px] mx-auto gap-8 place-items-center'>
+            <CardPackage image="/polish-window.webp" title='Menghilangkan lecet dan jamur pada kaca mobil' message="Hi kak, aku mau booking jadwal salon kaca mobil nih" />
+            <CardPackage image="/polish-body.webp" title='Menghilangkan lecet dan jamur pada body mobil' message="Hi kak, aku mau booking jadwal salon body mobil nih" />
+            <CardPackage image="/polish-engine.webp" title='Membersihkan mesin guna mencaja agar tidak karatan dan awet' message="Hi kak, aku mau booking jadwal salon mesin mobil nih" />
+            <CardPackage image="/polish-interior.webp" title='Membersihkan dashboard, cuci karpet, dan plafon' message="Hi kak, aku mau booking jadwal salon interior mobil nih" />
+          </div>
         </div>
-      </div>
+        <div>
+          <SectionTitle title='Ceramic Coating' />
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+          <div className='container w-[90%] lg:w-full mx-auto mt-[60px]'>
+            <p className='text-xl'>
+              Nano ceramic coating memberikan lapisan yang lebih keras dan tebal sehingga memberikan perlindungan terhadap cat lebih lama dan kuat tidak seperti wax dan sealan yang Hanya dapat memberikan perlindungan hitungan bulan.
+              <br /><br />
+              Nano coating juga merupakan cairan yang dapat menyerap ke pori-pori cat sehingga menyatu begitu diaplikasikan ke permukaan dan hanya bisa hilang Mika dipoles menggunakan compound.
+            </p>
+          </div>
+        </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        <div>
+          <SectionTitle title='Kenapa Kami' />
+          <div className='container w-[90%] lg:w-full mx-auto mt-[60px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 place-items-start'>
+            <CardWhyUs icon={<BiSolidCheckShield color='#FF9900' size={150} />} title='Garansi' text='Anda tidak perlu khawatir dengan kualitas produk, karena kami menjaminnya dengan garansi resmi. Ada keluhan? Tim kami siap membantu anda' />
+            <CardWhyUs icon={<BiSolidUser color='#FF9900' size={150} />} title='Teknisi Handal' text='Teknisi kami sudah mendapatkan pelatihan khusus dan sangat berpengalaman memasang produk-produk kami dengan baik dan rapih' />
+            <CardWhyUs icon={<BiSolidAlarm color='#FF9900' size={150} />} title='Garansi' text='Kami pastikan teknisi kami akan datang ke tempat anda sesuai dengan waktu yang dijadwalkan' />
+          </div>
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        {/* <div>
+          <SectionTitle id='testimonials' title='Testimonials' />
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
+          <div className="container w-[90%] lg:w-full mx-auto mt-[60px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-5 place-items-start">
+            {DUMMY_REVIEW.map((item, index) => {
+              return <div key={item.id}>
+                <div>
+                  <p>{item.name}</p>
+                  <div className='flex'>
+                    {Array(item.rate).fill("").map((start, index) => {
+                      return <BiSolidStar key={index} color='#FF9900' />
+                    })}
+                  </div>
+                </div>
+                <p className='mt-5'>{item.message}</p>
+              </div>
+            })}
+          </div>
+        </div> */}
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+        <SectionContact />
+      </main>
+
+      <Footer />
+    </div>
   )
 }
